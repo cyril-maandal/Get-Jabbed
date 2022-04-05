@@ -15,8 +15,8 @@ public class Appointment {
 
     private Date date;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "vaccineId",referencedColumnName = "id")
+    @OneToOne(mappedBy = "appointment")
+    @JoinColumn(name = "vaccineId")
     private Vaccine vaccine;
 
     @ManyToOne
@@ -24,6 +24,7 @@ public class Appointment {
     private Person person;
 
     private String location;
+
     private boolean completed;
 
     public Appointment(){}
