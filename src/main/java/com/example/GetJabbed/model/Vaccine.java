@@ -14,6 +14,15 @@ public class Vaccine {
 
     private String type;
 
-    @OneToOne(mappedBy = "vaccine")
+    @OneToOne(mappedBy = "vaccine",fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
+    @JoinColumn(name = "appointmentId")
     private Appointment appointment;
+
+    public Vaccine(){
+
+    }
+    public Vaccine(String type,Appointment appointment){
+        this.type = type;
+        this.appointment = appointment;
+    }
 }

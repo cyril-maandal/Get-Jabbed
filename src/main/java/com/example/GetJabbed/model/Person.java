@@ -24,4 +24,13 @@ public class Person {
     @OneToMany(mappedBy = "person",fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
     private List<Appointment> appointmentList;
 
+    public Person(){
+
+    }
+    public Person(String ssn, boolean vaccinated,int doses,List<Appointment> appointmentList){
+        this.ssn = ssn;
+        this.vaccinated = vaccinated;
+        this.doses = doses;
+        this.appointmentList = appointmentList;
+    }
 }
