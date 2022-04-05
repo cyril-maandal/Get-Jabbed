@@ -27,7 +27,7 @@ public class GetJabbedApplication {
 			calendar.set(2022,4,5);
 			Appointment appointment = new Appointment(new Date(calendar.getTimeInMillis()),null,"location",false);
 			Vaccine vaccine = new Vaccine("Pfizer",appointment);
-			vaccineRepository.save(vaccine);
+			appointment.setVaccine(vaccine);
 			appointmentRepository.save(appointment);
 		};
 	}

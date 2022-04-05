@@ -1,5 +1,7 @@
 package com.example.GetJabbed.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,11 +17,13 @@ public class Appointment {
 
     private Date date;
 
-    @OneToOne(mappedBy = "appointment")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
     @JoinColumn(name = "vaccineId")
     private Vaccine vaccine;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "personId")
     private Person person;
 

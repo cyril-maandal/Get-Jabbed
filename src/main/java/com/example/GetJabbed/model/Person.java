@@ -1,5 +1,6 @@
 package com.example.GetJabbed.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -22,6 +23,7 @@ public class Person {
     private int doses;
 
     @OneToMany(mappedBy = "person",fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
+    @JsonManagedReference
     private List<Appointment> appointmentList;
 
     public Person(){
