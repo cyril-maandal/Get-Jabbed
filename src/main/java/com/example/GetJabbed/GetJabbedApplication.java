@@ -16,19 +16,19 @@ import java.util.Date;
 @SpringBootApplication
 public class GetJabbedApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GetJabbedApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GetJabbedApplication.class, args);
+    }
 
-	@Bean
-	public CommandLineRunner testData(PersonRepository personRepository, AppointmentRepository appointmentRepository, VaccineRepository vaccineRepository){
-		return args ->{
-			Calendar calendar = Calendar.getInstance();
-			calendar.set(2022,4,5);
-			Appointment appointment = new Appointment(new Date(calendar.getTimeInMillis()),null,"location",false);
-			Vaccine vaccine = new Vaccine("Pfizer",appointment);
-			appointment.setVaccine(vaccine);
-			appointmentRepository.save(appointment);
-		};
-	}
+    @Bean
+    public CommandLineRunner testData(PersonRepository personRepository, AppointmentRepository appointmentRepository, VaccineRepository vaccineRepository) {
+        return args -> {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(2022, 4, 5);
+            Appointment appointment = new Appointment(new Date(calendar.getTimeInMillis()), null, "location", false, "Not Yet",new Date(calendar.getTimeInMillis()));
+            Vaccine vaccine = new Vaccine("Pfizer", appointment);
+            appointment.setVaccine(vaccine);
+            appointmentRepository.save(appointment);
+        };
+    }
 }

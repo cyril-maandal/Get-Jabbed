@@ -3,6 +3,7 @@ package com.example.GetJabbed.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
 @Table
 @Entity
 @Data
+@NoArgsConstructor
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,14 +33,18 @@ public class Appointment {
 
     private boolean completed;
 
-    public Appointment(){}
+    private String status;
 
+    private Date reschedule;
 
-    public Appointment(Date date, Person person, String location, boolean completed) {
+    public Appointment(Date date, Person person, String location, boolean completed,String status,Date reschedule) {
         this.date = date;
         this.person = person;
         this.location = location;
         this.completed = completed;
+        this.status=status;
+        this.reschedule=reschedule;
     }
+
 
 }
